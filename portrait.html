@@ -2,11 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>portrait &#60;3 </title>
+    <style>
+        .fire_pic{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            right:auto;
+            width: 30%;
+            filter: drop-shadow(5px 15px grey);
+            transition-duration: 4s; 
+        }
+        .fire_pic:hover{
+
+            transform: skew(50deg) rotateY(180deg);
+
+        }   
+
+        .stars{
+            position: fixed;
+            top: 35%;
+            left: 40%;
+            font-size: 40px;
+            filter: drop-shadow(5px 15px grey);
+            transition-duration: 2s; 
+
+        }
+        .stars:hover{
+        transform: skew(50deg) rotateY(-180deg) rotateX(50deg);
+        
+
+        }   
+        body{
+            background-image: url("sky.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+        </style>
 
 </head>
 <body>
-    djfjefhjd
+    <img src="fire.png" class="fire_pic">
+
+    <p class="stars">&#174; &emsp; &#9734; <br/> &emsp;&#9733; &#9734;
+        &#10027; <br> &emsp; &emsp;&emsp;	&#10039;
+    </p>
 </body>
 </html>
