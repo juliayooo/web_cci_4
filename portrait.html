@@ -6,15 +6,14 @@
     <style>
         .fire_pic{
             position: fixed;
-            top: 50%;
-            left: 50%;
+            top: 300px;
+            left: 600px;
             right:auto;
-            width: 30%;
+            width: 25%;
             filter: drop-shadow(5px 15px grey);
             transition-duration: 4s; 
         }
-        .fire_pic:hover{
-
+        .fire_pic:hover{                                             
             transform: skew(50deg) rotateY(180deg);
 
         }   
@@ -22,7 +21,7 @@
         .stars{
             position: fixed;
             top: 35%;
-            left: 40%;
+            left: 33%;
             font-size: 40px;
             filter: drop-shadow(5px 15px grey);
             transition-duration: 2s; 
@@ -39,14 +38,47 @@
             background-size: cover;
 
         }
+        .dashes{
+            color: black;
+            position: fixed;
+            top: 70%;
+            left: 40%;
+            font-size: 40px;
+            transition-duration: 2s; 
+        }
+        .dashes:hover{
+            transform: skew(50deg) rotateY(-180deg) rotateX(50deg);
+            transition-timing-function: ease-in;
+        }
+        .pants_pic{
+            position: fixed;
+            top: 300px;
+            left: 300px;
+            right:auto;
+            width: 25%;
+            filter: drop-shadow(5px 15px grey);
+            transition-duration: 4s; 
+        }
+        .pants_pic:hover{                                             
+            transform: rotateY(180deg) scale(150%);
+
+        }
         </style>
 
 </head>
 <body>
-    <img src="fire.png" class="fire_pic">
 
+<!-- fire image -->
+    <img src="fire.png" class="fire_pic">
+<!-- stars -->
     <p class="stars">&#174; &emsp; &#9734; <br/> &emsp;&#9733; &#9734;
         &#10027; <br> &emsp; &emsp;&emsp;	&#10039;
     </p>
+<!-- dashes -->
+    <p class="dashes">
+        -</br>- &emsp; - &emsp; = &emsp;&emsp;</br> -\
+    </p>
+<!-- pants image -->
+    <img src="pants.png" class="pants_pic">
 </body>
 </html>
