@@ -6,7 +6,7 @@
     <style>
         .fire_pic{
             position: fixed;
-            top: 300px;
+            top: 250px;
             left: 600px;
             right:auto;
             width: 25%;
@@ -20,8 +20,8 @@
 
         .stars{
             position: fixed;
-            top: 35%;
-            left: 33%;
+            top: 20%;
+            left: 25%;
             font-size: 40px;
             filter: drop-shadow(5px 15px grey);
             transition-duration: 2s; 
@@ -48,37 +48,110 @@
         }
         .dashes:hover{
             transform: skew(50deg) rotateY(-180deg) rotateX(50deg);
-            transition-timing-function: ease-in;
+            transition-timing-function: ease-in-out;
         }
         .pants_pic{
             position: fixed;
-            top: 300px;
-            left: 300px;
+            top: 350px;
+            left: 350px;
             right:auto;
-            width: 25%;
-            filter: drop-shadow(5px 15px grey);
-            transition-duration: 4s; 
+            width: 20%;
+            transition-duration: 2s; 
         }
         .pants_pic:hover{                                             
-            transform: rotateY(180deg) scale(150%);
+            transform: rotateY(-180deg) scale(150%);
+            opacity: 50%;
+            /* transition-timing-function: ease-in-out; */
 
+
+        }
+        .face_pic{
+            position: fixed;
+            top: 350px;
+            left: 600px;
+            right:auto;
+            width: 5%; 
+            opacity: 75%;       
+        }
+        .swim_gif{
+            position: relative;
+            right:auto;
+            width: 100%;        
+        }
+        .paint_pic{
+            position: fixed;
+            width: 15%;
+            left: 20px;;
+            bottom: 10px;;
+            visibility: hidden;
+        }
+        .door_pic{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 300px;
         }
         </style>
 
 </head>
 <body>
+ <!-- swimming gif  -->
+    <img src="swimming.gif" class="swim_gif">
 
 <!-- fire image -->
     <img src="fire.png" class="fire_pic">
+
 <!-- stars -->
     <p class="stars">&#174; &emsp; &#9734; <br/> &emsp;&#9733; &#9734;
         &#10027; <br> &emsp; &emsp;&emsp;	&#10039;
     </p>
+
 <!-- dashes -->
     <p class="dashes">
-        -</br>- &emsp; - &emsp; = &emsp;&emsp;</br> -\
+        &#9734;</br>&emsp;&emsp;&#10039; &emsp;&emsp;&#9733;&emsp;&emsp;&emsp; &#9733; &emsp;&emsp;</br> -\
     </p>
+
 <!-- pants image -->
     <img src="pants.png" class="pants_pic">
+
+<!-- painting object -->
+    <img src="painting.png" class="paint_pic" id="paint">
+
+
+
+
+<!-- face object -->
+    <div class="face_container">
+        <img src="face.png" class="face_pic" id="face">
+    </div>
+
+
+<!-- door object -->
+<img src="door.png" class="door_pic" id="door">
+
+<script language="javascript">
+
+    var face = document.getElementById("face");
+    var paint = document.getElementById("paint");
+    var door = document.getElementById("door");
+
+    document.addEventListener('click', function(i){
+        face.style.left = i.clientX - 20 + "px";
+        face.style.top = i.clientY - 20 + "px";
+
+        if((i.clientX > 0 && i.clientX < 300) && i.clientY < 633){
+            paint.style.visibility = "visible";
+            door.style.visibility = "hidden";
+
+        }
+    })
+    
+
+</script>
+
 </body>
+
+
+
 </html>
+<!-- ADD FRAME BY FRAME WALKING ON BOTTOM OF PAGE -->
