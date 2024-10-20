@@ -121,7 +121,7 @@
 
 
 <!-- face object -->
-    <div class="face_container">
+    <div class="face_container" id="face_container">
         <img src="face.png" class="face_pic" id="face">
     </div>
 
@@ -131,14 +131,33 @@
 
 <script language="javascript">
 
+// all elements to make changes to 
     var face = document.getElementById("face");
     var paint = document.getElementById("paint");
     var door = document.getElementById("door");
+    var face_container = document.getElementById("face_container");
 
+// when the user clicks
     document.addEventListener('click', function(i){
-        face.style.left = i.clientX - 20 + "px";
-        face.style.top = i.clientY - 20 + "px";
 
+        // // move face to click position
+        // face.style.left = i.clientX - 20 + "px";
+        // face.style.top = i.clientY - 20 + "px";
+
+        // add a new face 
+        var new_face = document.createElement("img");
+        new_face.src = "face.png";
+        new_face.id = "face" + i.clientX;
+        new_face.className = "face_pic";
+
+        // put it at mouse position 
+        new_face.style.left = i.clientX - 20 + "px";
+        new_face.style.top = i.clientY - 20 + "px";
+        // add to div 
+        face_container.appendChild(new_face);
+
+
+        // is user clicks on the door, make it dissapear to reveal painting
         if((i.clientX > 0 && i.clientX < 300) && i.clientY < 633){
             paint.style.visibility = "visible";
             door.style.visibility = "hidden";
