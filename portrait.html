@@ -116,15 +116,15 @@
             width: 650px;
             top: 11%;
             left: 35%;
-            transition-duration: 3s;
+            /* transition-duration: 3s; */
 
 
         }
-        .hair_pic:hover{
+        /* .hair_pic:hover{
             transform: rotateY(30deg);
             transition-timing-function: ease-out;
-        }
-        .left_eye{
+        } */
+        /* .left_eye{
             width: 70px;
             height: 40px;
             position: absolute;
@@ -154,19 +154,18 @@
             font-family:'Courier New';
             padding-top: 10px;
             font-size: 20pt;
-        }
+        } */
         .mouth_pic{
             position: absolute;
             width: 200px;
             top: 50%;
             left: 43%;
-            transition-duration: 3s;
 
         }
         canvas{
             position: absolute;
-            top: 0%;
-            left : 10%;
+            top: 20%;
+            left : 33%;
         }
         </style>
 
@@ -224,7 +223,7 @@
 // P5 SETUP
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(300, 300);
   colorMode(HSB);
 
   // Set angle mode so that atan2() returns angles in degrees
@@ -238,8 +237,8 @@ function draw() {
 
   // Draw left eye
 
-  let leftX = 350;
-  let leftY = 300;
+  let leftX = 150;
+  let leftY = 200;
 
   // Calculate angle between left eye and mouse
   let leftAngle = atan2(mouseY - leftY, mouseX - leftX);
@@ -255,8 +254,8 @@ function draw() {
 
   // Draw right eye
 
-  let rightX = 350;
-  let rightY = 300;
+  let rightX = 250;
+  let rightY = 200;
 
   // Calculate angle between right eye and angle
   let rightAngle = atan2(mouseY - rightY, mouseX - rightX);
