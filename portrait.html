@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="p5/empty-example/p5.min.js"></script>
+    <script src="p5/empty-example/addons/p5.sound.js"></script>
+    <script src="sketch.js"></script>
     <title>portrait &#60;3 </title>
     <style>
 
@@ -109,15 +113,60 @@
         }
         .hair_pic{
             position: absolute;
-            width: 600px;
-            top: 15%;
+            width: 650px;
+            top: 11%;
             left: 35%;
+            transition-duration: 3s;
+
 
         }
         .hair_pic:hover{
             transform: rotateY(30deg);
-            transition: 3s;
             transition-timing-function: ease-out;
+        }
+        .left_eye{
+            width: 70px;
+            height: 40px;
+            position: absolute;
+            background-color: white;
+            border-radius: 0 50%;
+            top: 320px;
+            left: 470px;
+            text-align: center;
+            font-weight: bold;
+            font-family:'Courier New';
+            padding-top: 10px;
+            font-size: 20pt;
+
+
+
+        }
+        .right_eye{
+            width: 70px;
+            height: 40px;
+            position: absolute;
+            background-color: white;
+            border-radius: 50% 0;
+            top: 320px;
+            left: 575px;
+            text-align: center;
+            font-weight: bold;
+            font-family:'Courier New';
+            padding-top: 10px;
+            font-size: 20pt;
+        }
+        .mouth_pic{
+            position: absolute;
+            width: 200px;
+            top: 50%;
+            left: 43%;
+            transition-duration: 3s;
+
+        }
+        canvas{
+            position: absolute;
+            top: 0%;
+            left : 10%;
         }
         </style>
 
@@ -150,29 +199,85 @@
         <img src="face.png" class="face_pic" id="face">
       
     </div>
- 
 
 
 
 <!-- door object
 <img src="door.png" class="door_pic" id="door"> -->
 
-<!-- container for css portrait -->
+        <!-- container for css portrait -->
 
-    <div class="face_shapes">
+            <div class="face_shapes" id="face_shapes">
 
-        <div class="base_face">&emsp;</div>
-        <img src="hair.png" class="hair_pic">
+                <div class="base_face">&emsp;</div>
+                <img src="hair.png" class="hair_pic">
+                <div class="left_eye">-</div>
+                <div class="right_eye">-</div>
+                <img src="mouth.png" class="mouth_pic">
 
-    </div>
+            </div>
+
 
 <script language="javascript">
+
+
+// P5 SETUP
+
+function setup() {
+  createCanvas(400, 400);
+  colorMode(HSB);
+
+  // Set angle mode so that atan2() returns angles in degrees
+  angleMode(DEGREES);
+
+  describe('Two eyes that follow the cursor.');
+}
+
+function draw() {
+
+
+  // Draw left eye
+
+  let leftX = 350;
+  let leftY = 300;
+
+  // Calculate angle between left eye and mouse
+  let leftAngle = atan2(mouseY - leftY, mouseX - leftX);
+
+  push();
+  translate(leftX, leftY);
+  fill(255);
+  ellipse(0, 0, 50, 50);
+  rotate(leftAngle);
+  fill(0);
+  ellipse(12.5, 0, 25, 25);
+  pop();
+
+  // Draw right eye
+
+  let rightX = 350;
+  let rightY = 300;
+
+  // Calculate angle between right eye and angle
+  let rightAngle = atan2(mouseY - rightY, mouseX - rightX);
+
+  push();
+  translate(rightX, rightY);
+  fill(255);
+  ellipse(0, 0, 50, 50);
+  rotate(rightAngle);
+  fill(0);
+  ellipse(12.5, 0, 25, 25);
+  pop();
+}
+
 
 // all elements to make changes to 
     var face = document.getElementById("face");
     var paint = document.getElementById("paint");
     var door = document.getElementById("door");
     var face_container = document.getElementById("face_container");
+    var face_shapes = document.getElementById("face_shapes");
 
 // when the user clicks
     document.addEventListener('click', function(i){
@@ -201,7 +306,11 @@
 
         }
     })
-    
+    face_shapes.addEventListener('click', function() {
+        face_shapes.style.visibility = "hidden";
+    });
+
+
 
 </script>
 
