@@ -6,6 +6,7 @@
     <style>
 
         .fire_pic{
+            visibility: hidden;
             position: fixed;
             top: 250px;
             left: 600px;
@@ -20,6 +21,7 @@
         }   
 
         .stars{
+
             position: fixed;
             top: 20%;
             left: 25%;
@@ -53,6 +55,7 @@
             transition-timing-function: ease-in-out;
         }
         .pants_pic{
+            visibility: hidden;
             position: fixed;
             top: 350px;
             left: 350px;
@@ -76,6 +79,7 @@
             opacity: 75%;       
         }
         .swim_gif{
+            visibility: hidden;
             position: relative;
             right:auto;
             width: 100%;        
@@ -92,6 +96,28 @@
             bottom: 0;
             left: 0;
             width: 300px;
+        }
+
+        .base_face{
+            position: absolute;
+            width: 250px;
+            height: 300px;
+            left: 40%;
+            top: 30%;
+            background-color: #c7804c;
+            border-radius: 300px;
+        }
+        .hair_pic{
+            position: absolute;
+            width: 600px;
+            top: 15%;
+            left: 35%;
+
+        }
+        .hair_pic:hover{
+            transform: rotateY(30deg);
+            transition: 3s;
+            transition-timing-function: ease-out;
         }
         </style>
 
@@ -119,15 +145,26 @@
 <!-- painting object
     <img src="painting.png" class="paint_pic" id="paint">
  -->
-
 <!-- face object -->
     <div class="face_container" id="face_container">
         <img src="face.png" class="face_pic" id="face">
+      
     </div>
+ 
+
 
 
 <!-- door object
 <img src="door.png" class="door_pic" id="door"> -->
+
+<!-- container for css portrait -->
+
+    <div class="face_shapes">
+
+        <div class="base_face">&emsp;</div>
+        <img src="hair.png" class="hair_pic">
+
+    </div>
 
 <script language="javascript">
 
