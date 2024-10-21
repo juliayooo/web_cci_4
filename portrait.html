@@ -113,9 +113,9 @@
         }
         .hair_pic{
             position: absolute;
-            width: 650px;
+            width: 10%;
             top: 11%;
-            left: 35%;
+            left: 38%;
             /* transition-duration: 3s; */
 
 
@@ -123,15 +123,15 @@
         /* .hair_pic:hover{
             transform: rotateY(30deg);
             transition-timing-function: ease-out;
-        } */
-        /* .left_eye{
+        }  */
+        .left_eye{
             width: 70px;
             height: 40px;
-            position: absolute;
+            position: fixed;
             background-color: white;
             border-radius: 0 50%;
-            top: 320px;
-            left: 470px;
+            top: 43%;
+            left: 42%;
             text-align: center;
             font-weight: bold;
             font-family:'Courier New';
@@ -144,21 +144,21 @@
         .right_eye{
             width: 70px;
             height: 40px;
-            position: absolute;
+            position: fixed;
             background-color: white;
             border-radius: 50% 0;
-            top: 320px;
-            left: 575px;
+            top: 43%;
+            left: 50%;
             text-align: center;
             font-weight: bold;
             font-family:'Courier New';
             padding-top: 10px;
             font-size: 20pt;
-        } */
+        }
         .mouth_pic{
             position: absolute;
             width: 200px;
-            top: 50%;
+            top: 45%;
             left: 43%;
 
         }
@@ -166,6 +166,11 @@
             position: absolute;
             top: 20%;
             left : 33%;
+        }
+        h3{
+            position: fixed;
+            left: 50%;
+            top: 50%;
         }
         </style>
 
@@ -175,7 +180,7 @@
     <img src="swimming.gif" class="swim_gif">
 
 <!-- fire image -->
-    <img src="fire.png" class="fire_pic">
+    <img src="fire.png" class="fire_pic" id="fire_pic">
 
 <!-- stars -->
     <p class="stars">&#174; &emsp; &#9734; <br/> &emsp;&#9733; &#9734;
@@ -206,14 +211,14 @@
 
         <!-- container for css portrait -->
 
-            <div class="face_shapes" id="face_shapes">
+            <div class="face_shapes" id="face_shapes" onmousemove="hair_grow()">
 
                 <div class="base_face">&emsp;</div>
-                <img src="hair.png" class="hair_pic">
                 <div class="left_eye">-</div>
                 <div class="right_eye">-</div>
+                <img src="hair.png" class="hair_pic" id = "hair_pic">
                 <img src="mouth.png" class="mouth_pic">
-
+                <h3>Rub my head</h3>
             </div>
 
 
@@ -222,53 +227,53 @@
 
 // P5 SETUP
 
-function setup() {
-  createCanvas(300, 300);
-  colorMode(HSB);
+// function setup() {
+//   createCanvas(300, 300);
+//   colorMode(HSB);
 
-  // Set angle mode so that atan2() returns angles in degrees
-  angleMode(DEGREES);
+//   // Set angle mode so that atan2() returns angles in degrees
+//   angleMode(DEGREES);
 
-  describe('Two eyes that follow the cursor.');
-}
+//   describe('Two eyes that follow the cursor.');
+// }
 
-function draw() {
+// function draw() {
 
 
-  // Draw left eye
+//   // Draw left eye
 
-  let leftX = 150;
-  let leftY = 200;
+//   let leftX = 150;
+//   let leftY = 200;
 
-  // Calculate angle between left eye and mouse
-  let leftAngle = atan2(mouseY - leftY, mouseX - leftX);
+//   // Calculate angle between left eye and mouse
+//   let leftAngle = atan2(mouseY - leftY, mouseX - leftX);
 
-  push();
-  translate(leftX, leftY);
-  fill(255);
-  ellipse(0, 0, 50, 50);
-  rotate(leftAngle);
-  fill(0);
-  ellipse(12.5, 0, 25, 25);
-  pop();
+//   push();
+//   translate(leftX, leftY);
+//   fill(255);
+//   ellipse(0, 0, 50, 50);
+//   rotate(leftAngle);
+//   fill(0);
+//   ellipse(12.5, 0, 25, 25);
+//   pop();
 
-  // Draw right eye
+//   // Draw right eye
 
-  let rightX = 250;
-  let rightY = 200;
+//   let rightX = 250;
+//   let rightY = 200;
 
-  // Calculate angle between right eye and angle
-  let rightAngle = atan2(mouseY - rightY, mouseX - rightX);
+//   // Calculate angle between right eye and angle
+//   let rightAngle = atan2(mouseY - rightY, mouseX - rightX);
 
-  push();
-  translate(rightX, rightY);
-  fill(255);
-  ellipse(0, 0, 50, 50);
-  rotate(rightAngle);
-  fill(0);
-  ellipse(12.5, 0, 25, 25);
-  pop();
-}
+//   push();
+//   translate(rightX, rightY);
+//   fill(255);
+//   ellipse(0, 0, 50, 50);
+//   rotate(rightAngle);
+//   fill(0);
+//   ellipse(12.5, 0, 25, 25);
+//   pop();
+// }
 
 
 // all elements to make changes to 
@@ -277,6 +282,7 @@ function draw() {
     var door = document.getElementById("door");
     var face_container = document.getElementById("face_container");
     var face_shapes = document.getElementById("face_shapes");
+    var fire_pic = document.getElementById("fire_pic");
 
 // when the user clicks
     document.addEventListener('click', function(i){
@@ -298,19 +304,35 @@ function draw() {
         face_container.appendChild(new_face);
 
 
-        // is user clicks on the door, make it dissapear to reveal painting
-        if((i.clientX > 0 && i.clientX < 300) && i.clientY < 633){
-            paint.style.visibility = "visible";
-            door.style.visibility = "hidden";
+    //     // if user clicks on the door, make it dissapear to reveal painting
+    //     if((i.clientX > 0 && i.clientX < 300) && i.clientY < 633){
+    //         paint.style.visibility = "visible";
+    //         door.style.visibility = "hidden";
+
+    //     }
+    })
+
+    // face_shapes.addEventListener('click', function() {
+    //     face_shapes.style.transition =   "visibility 0s 2s, opacity 2s linear";
+    //     face_shapes.style.visibility = "hidden";
+
+    // });
+
+    let x = 10;
+    function hair_grow(){
+        var hair_pic = document.getElementById("hair_pic");
+        x += 1;
+        hair_pic.style.width = x + "px";
+
+        if(x > 700){
+            hair_pic.style.visibility = "hidden";
+            face_shapes.style.visibility = "hidden";
+            fire_pic.style.visibility = "visible";
 
         }
-    })
-    face_shapes.addEventListener('click', function() {
-        face_shapes.style.visibility = "hidden";
-    });
+    }
 
-
-
+   
 </script>
 
 </body>
